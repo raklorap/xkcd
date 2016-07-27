@@ -113,20 +113,22 @@ static UIImage *downloadImage = nil;
 		self.imageFetcher.delegate = self;
 	}
 	
-	[self checkForNewComics];
-	
-	if (self.requestedLaunchComic) {
-		NSIndexPath *indexPath = [self indexPathForComicNumbered:self.requestedLaunchComic];
-		if (indexPath) {
-			[self scrollToComicAtIndexPath:indexPath];
-			Comic *launchComic = [Comic comicNumbered:self.requestedLaunchComic];
-			[self viewComic:launchComic];
-		}
-		self.requestedLaunchComic = 0;
-	}
-	else {
-		[self restoreScrollPosition];
-	}
+//  Suppressing constant refresh and automatic scroll behavior for custom view controller transition demo
+    
+//	[self checkForNewComics];
+//	
+//	if (self.requestedLaunchComic) {
+//		NSIndexPath *indexPath = [self indexPathForComicNumbered:self.requestedLaunchComic];
+//		if (indexPath) {
+//			[self scrollToComicAtIndexPath:indexPath];
+//			Comic *launchComic = [Comic comicNumbered:self.requestedLaunchComic];
+//			[self viewComic:launchComic];
+//		}
+//		self.requestedLaunchComic = 0;
+//	}
+//	else {
+//		[self restoreScrollPosition];
+//	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {

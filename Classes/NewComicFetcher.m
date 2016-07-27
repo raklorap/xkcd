@@ -99,10 +99,15 @@
 	else if (fetchOperation.comicName && fetchOperation.comicTitleText && fetchOperation.comicImageURL && fetchOperation.comicTranscript) {
 		// Got a comic -- store it and keep going
 		[self.comicsToInsert addObject:fetchOperation];
-		[self fetchComic:(fetchOperation.comicNumber + 1)];
+//		[self fetchComic:(fetchOperation.comicNumber + 1)];                 Suppressing constant fresh behavior
 		if (fetchOperation.comicNumber % kInsertChunkSize == 0) {
 			[self insertComics];
+            [self.delegate newComicFetcherDidFinishFetchingAllComics:self]; //  Updating delegate as soon as first fetch is finished
 		}
+        else
+        {
+            [self fetchComic:(fetchOperation.comicNumber + 1)];
+        }
 	}
 	else {
 		// wtf?
