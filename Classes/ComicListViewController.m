@@ -129,6 +129,7 @@ static UIImage *downloadImage = nil;
 //	else {
 //		[self restoreScrollPosition];
 //	}
+    self.navigationController.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
